@@ -1,2 +1,0 @@
-# ASPJ
-School Project
