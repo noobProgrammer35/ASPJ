@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% block content %}
+<form method="post" action="/profile/James123/account/update">
+      {{ form.hidden_tag() }}
+    <div class="single-blog-wrapper">
+
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12 col-md-8">
+                    <div class="regular-page-content-wrapper section-padding-80">
+                            <h2>Account Update</h2>
+                            <p>We accept credit card only. Visa (16 digits), American Express, Master Card!</p>
+<br>
+
+
+                          {% if errors %}
+                            <p style = 'color:red'>{{ errors }} </p>
+                          {% endif %}
+                          <div class="input-group flex-nowrap">
+                              <div class="input-group-prepend">
+                                <span class="input-group-text" id="addon-wrapping">Payment Method</span>
+                              </div>
+
+                                {{ form.payment_method(class_='form-control',placeholder='Last Name') }}
+
+                            </div>
+                          {% for error in form.payment_method.errors %}
+                                    <li style ='color:red;list-style-type:none;'>{{ error }}</li>
+                                {% endfor %}
+
+                        <br>
+                          <div class="input-group flex-nowrap">
+                              <div class="input-group-prepend">
+                                <span class="input-group-text" id="addon-wrapping">Credit Card Number</span>
+                              </div>
+
+                                 {{ form.credit_card(class_='form-control',placeholder='Number') }}
+
+                            </div>
+                          {% for error in form.credit_card.errors %}
+                                    <li style ='color:red;list-style-type:none;'>{{ error }}</li>
+                                {% endfor %}
+
+                        <br>
+                            <div class="input-group flex-nowrap">
+                              <div class="input-group-prepend">
+                                <span class="input-group-text" id="addon-wrapping">Address</span>
+                              </div>
+                                {{ form.address(class_='form-control',placeholder='') }}
+                            </div>
+                              {% for error in form.address.errors %}
+                                    <li style ='color:red;list-style-type:none;'>{{ error }}</li>
+                                {% endfor %}
+
+
+
+
+                            <br>
+                            <center><input type="submit"  value="Update" class="btn btn-outline-primary"></center>
+
+
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+{% endblock %}

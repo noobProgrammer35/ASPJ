@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block title %}Techmarketplace - Password Reset {% endblock %}
+{% block content %}
+<form method="post" action="/reset">
+      {{ form.hidden_tag() }}
+    <div class="single-blog-wrapper">
+
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12 col-md-8">
+                    <div class="regular-page-content-wrapper section-padding-80">
+                            <h2>Forgot Password</h2>
+                            <h5></h5>
+
+<br>
+
+
+                          {% if errors %}
+                            <p style = 'color:red'>{{ errors }} </p>
+                          {% endif %}
+
+                            <div class="input-group flex-nowrap">
+                              <div class="input-group-prepend">
+                                <span class="input-group-text" id="addon-wrapping">Email</span>
+                              </div>
+                                {{ form.email(class_='form-control',placeholder='Email') }}
+                            </div>
+                         {% for error in form.email.errors %}
+                                    <li style ='color:red;list-style-type:none;'>{{ error }}</li>
+                                {% endfor %}
+<br>
+                            <center><input type="submit"  value="Login" class="btn btn-outline-primary"></center>
+
+
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+{% endblock %}

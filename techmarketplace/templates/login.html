@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% block title %}Techmarketplace - Login{% endblock %}
+{% block content %}
+
+
+    <!-- ##### Blog Wrapper Area Start ##### -->
+<form method="post" action="/login">
+      {{ form.hidden_tag() }}
+    <div class="single-blog-wrapper">
+
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12 col-md-8">
+                    <div class="regular-page-content-wrapper section-padding-80">
+                            <h2>Login</h2>
+                            <p>Don't have an account? <a href="/register" style="color:blue">Register Now</a></p>
+                            <h5>User Credentials</h5>
+
+<br>
+
+
+                          {% if errors %}
+                            <p style = 'color:red'>{{ errors }} </p>
+                          {% endif %}
+
+                            <div class="input-group flex-nowrap">
+                              <div class="input-group-prepend">
+                                <span class="input-group-text" id="addon-wrapping">Username</span>
+                              </div>
+                                {{ form.username(class_='form-control',placeholder='Username') }}
+                            </div>
+
+<br>
+
+                            <div class="input-group flex-nowrap">
+                              <div class="input-group-prepend">
+                                <span class="input-group-text" id="addon-wrapping">Password</span>
+                              </div>
+                                {{ form.password(class_='form-control',placeholder='Password') }}
+                            </div>
+
+                            <br>
+                        <p>Forgot your password? <a href="/reset" style="color:blue">Click here</a></p>
+
+                            <center><input type="submit"  value="Login" class="btn btn-outline-primary"></center>
+
+
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <!-- ##### Blog Wrapper Area End ##### -->
+
+<script>
+function recaptchaCallback() {
+    $('#submitBtn').removeAttr('disabled');
+};
+</script>
+{% endblock %}

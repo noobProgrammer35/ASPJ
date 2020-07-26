@@ -1,0 +1,123 @@
+{% extends 'base.html' %}
+{% block title %}Techmarketplace - Register{% endblock %}
+{% block content %}
+  <!-- ##### Blog Wrapper Area Start ##### -->
+{% autoescape true %}
+<form action="/register" method="post" >
+      {{ form.hidden_tag() }}
+    <div class="single-blog-wrapper">
+
+        <!-- Single Blog Post Thumb -->
+        <div class="single-blog-post-thumb">
+            <img src="{{ url_for('static',filename='img/bg-img/bg-8.jpg') }}" alt="">
+        </div>
+
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12 col-md-8">
+                    <div class="regular-page-content-wrapper section-padding-80">
+                        <div class="regular-page-text">
+                            <h2>Join the Club - Register Now</h2>
+                            {% with messages = get_flashed_messages() %}
+                              {% if messages %}
+                                <ul class=flashes>
+                                {% for message in messages %}
+                                  <li style = 'color:red;'>{{ message }}</li>
+                                {% endfor %}
+                                </ul>
+                                <br>
+                              {% endif %}
+                            {% endwith %}
+                            <div class="input-group flex-nowrap">
+                              <div class="input-group-prepend">
+                                <span class="input-group-text" id="addon-wrapping">Username</span>
+                              </div>
+                                {{ form.username(class_='form-control',placeholder='Username') }}
+
+                            </div>
+                            {% for error in form.username.errors %}
+                                    <li style ='color:red;list-style-type:none;'>{{ error }}</li>
+                                {% endfor %}
+
+                            <br>
+
+                            <div class="input-group flex-nowrap">
+                              <div class="input-group-prepend">
+                                <span class="input-group-text" id="addon-wrapping">Name</span>
+                              </div>
+                                {{ form.fname(class_='form-control',placeholder='First Name') }}
+                                {{ form.lname(class_='form-control',placeholder='Last Name') }}
+
+                            </div>
+                              {% for error in form.fname.errors %}
+                                    <li style ='color:red;list-style-type:none;'>{{ error }}</li>
+                                {% endfor %}
+                               {% for error in form.lname.errors %}
+                                    <li style ='color:red;list-style-type:none;'>{{ error }}</li>
+                                {% endfor %}
+
+
+                            <br>
+
+                            <div class="input-group flex-nowrap">
+                              <div class="input-group-prepend">
+                                <span class="input-group-text" id="addon-wrapping">Contact</span>
+                              </div>
+                                {{ form.contact(class_='form-control',placeholder='+65') }}
+
+
+                            </div>
+                                 {% for error in form.contact.errors %}
+                                    <li style ='color:red;list-style-type:none;'>{{ error }}</li>
+                                {% endfor %}
+                            <br>
+
+                            <div class="input-group flex-nowrap">
+                              <div class="input-group-prepend">
+                                <span class="input-group-text" id="addon-wrapping">Email</span>
+                              </div>
+                                {{ form.email(class_='form-control',placeholder='example@domain.com') }}
+
+                            </div>
+                             {% for error in form.email.errors %}
+                                    <li style ='color:red;list-style-type:none;'>{{ error }}</li>
+                                {% endfor %}
+                            <br>
+
+                            <div class="input-group flex-nowrap">
+                              <div class="input-group-prepend">
+                                <span class="input-group-text" id="addon-wrapping">Password</span>
+                              </div>
+                                {{ form.password(class_='form-control') }}
+                            </div>
+
+                            <br>
+
+                            <div class="input-group flex-nowrap">
+                              <div class="input-group-prepend">
+                                <span class="input-group-text" id="addon-wrapping">Confirm Password</span>
+                              </div>
+                                {{ form.confirm(class_='form-control') }}
+                            </div>
+                             {% for error in form.password.errors %}
+                                    <li style ='color:red;list-style-type:none;'>{{ error }}</li>
+                                {% endfor %}
+                            <br>
+
+                            <input type="submit" value ="Register" class="btn btn-outline-primary">
+
+
+
+
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+{% endautoescape %}
+    <!-- ##### Blog Wrapper Area End ##### -->
+{% endblock %}

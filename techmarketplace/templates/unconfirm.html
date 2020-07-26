@@ -1,0 +1,30 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>{% block title %}{% endblock %}</title>
+
+    <link rel="stylesheet" href = "{{ url_for('static',filename = 'css/core-style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static',filename = 'css/style.css') }}">
+</head>
+{% include 'includes/navBar.html' %}
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <ul class=flashes>
+    {% for message in messages %}
+      <li>{{ message }}</li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
+<div class="container">
+<h1>Welcome {{current_user.username}}!</h1>
+<br>
+<p>You have not confirmed your account. Please check your inbox (and your spam folder) - you should have received an email with a confirmation link.</p>
+<p>Didn't get the email? <a href="{{ url_for('users.resend') }}" style="color:blue">Resend</a>.</p>
+</div>

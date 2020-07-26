@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Two factor setup</h1>
+<img src = "{{ url_for('admins.qrcode') }}" >
+{% if session.get('user') %}
+    <form method="post" action="/TwoFactorSetUp">
+        {{ form.hidden_tag() }}
+        {{ form.token }}
+        <input type="submit" value="verify token">
+{% endif %}
+    </form>
+</body>
+</html>

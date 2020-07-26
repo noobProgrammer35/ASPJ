@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% block content %}
+  <!-- ##### Single Product Details Area Start ##### -->
+    <section class="single_product_details_area d-flex align-items-center">
+
+        <!-- Single Product Thumb -->
+        <div class="single_product_thumb clearfix">
+            <div class="product_thumbnail_slides owl-carousel">
+                   <img src="../static/upload/{{ product.Image }}" alt="">
+                    <img src="../static/upload/{{ product.Image2 }}" alt="">
+<!--                <img src="img/product-img/product-big-3.jpg" alt="">-->
+            </div>
+        </div>
+
+        <!-- Single Product Description -->
+        <div class="single_product_desc clearfix">
+            <a href="cart.html">
+                <h2>{{ product.Name }}</h2>
+            </a>
+            <p class="product-price">{{ product.price }}</p>
+            <p class="product-desc">{{ product.Description }}</p>
+
+            <!-- Form -->
+            <form class="cart-form clearfix" method="post">
+                <!-- Select Box -->
+                <div class="select-box d-flex mt-50 mb-30">
+                    <select name="select" id="productSize" class="mr-5">
+                        <option value="value">Version: Multi-Colour</option>
+                        <option value="value">Version: Single Colour</option>
+                        <option value="value">Version: Non-LED</option>
+                    </select>
+                    <select name="select" id="productColor">
+                        <option value="value">Color: Black</option>
+                        <option value="value">Color: White</option>
+                        <option value="value">Color: Red</option>
+                        <option value="value">Color: Purple</option>
+                    </select>
+                </div>
+                <!-- Cart & Favourite Box -->
+                <div class="cart-fav-box d-flex align-items-center">
+                    <!-- Cart -->
+                    <form action="'/addtocart/{{ product.productid }}" method="post">
+
+                     <input type="number" name ='quantity'>
+                        <input type="submit" name="addtocart" value="Add to Cart" class="btn essence-btn">
+                    <!-- Favourite -->
+                    </form>
+
+                </div>
+            </form>
+        </div>
+    </section>
+{% endblock %}

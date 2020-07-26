@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class = 'container'>
+    <br>
+    <div class = 'row mt-0'>
+        <a href="/profile/{{ current_user.username }}" style = 'color:blue' class ='col-md-2'>User Information</a>
+        <a href = '/profile/{{ current_user.username }}/account'  style = 'color:blue' class = 'col-md-2'>Account Information</a>
+    </div>
+    <hr>
+    <p>Account ID: {{ current_user.account.accountid }}</p>
+    <p>Address: {{ current_user.account.address }}</p>
+    <p>Payment Method: {{ current_user.account.payment_method }}</p>
+    <p>Credit Card: {{ current_user.account.credit_card }}</p>
+    <p>Account Belongs To: {{current_user.username}}</p>
+    <button onclick="location.href='/profile/{{ current_user.username }}/account/update'"  class="btn btn-outline-primary">Update</button>
+</div>
+<br>
+{% endblock %}
